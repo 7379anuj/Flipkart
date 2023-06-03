@@ -17,11 +17,15 @@ class GetCustomersView(APIView):
         ser.is_valid(raise_exception=True)
         ser.save()
         return Response({"Message":"Save Successfully"})
+    
+
 class GetCustomerAddressView(APIView):
     def get(self,request):
         instance = CustomersAddress.objects.all()
         ser= GetCustomersAddressSerializer(instance,many=True)
         return Response(ser.data)
+    
+
     
 class CustomerDetailsAddressView(APIView):
     def get(self,request,pk):
